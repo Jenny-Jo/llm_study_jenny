@@ -1,9 +1,21 @@
 import streamlit as st
 import psycopg2
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 st.title("DB 연동 테스트")
 
-conn = st.connection("mydb", type="sql")
+conn = st.connection(
+    type="sql",
+    name="mydb",
+    dialect="postgresql",
+    host=os.getenv("host"),
+    port=os.getenv("port"),
+    database=os.getenv("database"),
+    username=os.getenv("uname"),
+    password=os.getenv("password")
+)
 
 sql = """
 select f1.film_id,
