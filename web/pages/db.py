@@ -1,31 +1,12 @@
 import streamlit as st
-import psycopg2
 from dotenv import load_dotenv
-import os
+from common.service.film_service import get_film_list
 load_dotenv()
 
-st.title("DB 연동 테스트")
+#########################
+# 화면 영역
+#########################
+df, title = get_film_list()
 
-conn = st.connection(
-    type="sql",
-    name="mydb",
-    dialect="postgresql",
-    host=os.getenv("host"),
-    port=os.getenv("port"),
-    database=os.getenv("database"),
-    username=os.getenv("uname"),
-    password=os.getenv("password")
-)
-
-sql = """
-select f1.film_id,
-	   f1.title,
-	   count(f2.actor_id) as actor_cnt
-from film f1
-left join film_actor f2
-on f1.film_id = f2.film_id
-group by f1.film_id"""
-
-df = conn.query(sql, ttl=10)
-
+st.title(title)
 st.dataframe(df)
