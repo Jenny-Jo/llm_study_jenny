@@ -1,0 +1,6 @@
+yt-dlp
+pytube
+pandas
+jupyter
+youtube_transcript_api
+sqlalchemy

@@ -8,6 +8,9 @@ from common.llm.provider import BaseProvider
 
 class OLLAMA_LLMs(enum.Enum):
     gemma3_1b = (enum.auto(), "gemma3:1b")
+    gemma3_q8 = (enum.auto(), "gemma3-q8")
+    gemma3_1b2 = (enum.auto(), "gemma3:1b2")
+    gemma3_1b3 = (enum.auto(), "gemma3:1b3")
 
 class OllamaProvider(BaseProvider):
     def _create_client(self):
