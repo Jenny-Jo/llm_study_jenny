@@ -11,6 +11,7 @@ class OLLAMA_LLMs(enum.Enum):
     gemma3_q8 = (enum.auto(), "gemma3-q8")
     gemma3_1b2 = (enum.auto(), "gemma3:1b2")
     gemma3_1b3 = (enum.auto(), "gemma3:1b3")
+    gemma3_psychiatric = (enum.auto(), "psychiatric_counselor:latest")
 
 class OllamaProvider(BaseProvider):
     def _create_client(self):
